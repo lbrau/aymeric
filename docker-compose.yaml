@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+    apache:
+        build: .docker/apache
+        container_name: sf4_apache
+        ports:
+            - 80:80
+        volumes:
+            - .docker/config/vhosts:/etc/apache2/sites-enabled
+            - ./demo-int:/srv
+        depends_on:
+            - php
+        networks:
+            - gda-test
+
+    php:
+        build: .docker/php
+        container_name: sf4_api_php
+        volumes:
+            - ./demo-int:/srv
+        depends_on:
+            - database
+        networks:
+            - gda-test
+
+    database:
+        image: 'mariadb:latest'
+        environment:
+            - "MYSQL_ROOT_PASSWORD=dev"
+            - "MYSQL_DATABASE=teenkedin"
+            - "MYSQL_USER=admin"
+            - "MYSQL_PASSWORD=admin"
+        ports:
+            - '3308:3306'
+        networks:
+            - gda-test
+
+networks:
+    gda-test:
+        driver: bridge

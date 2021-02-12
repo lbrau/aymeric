@@ -1,0 +1,8 @@
+# This setting specifies the IP address of the back end server.
+server.host: "0"
+
+# The Kibana server's name.  This is used for display purposes.
+server.name: "kibana"
+
+# The URL of the Elasticsearch instance to use for all your queries.
+elasticsearch.url: "http://elasticsearch:9200"
