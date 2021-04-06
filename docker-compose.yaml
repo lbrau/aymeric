@@ -2,9 +2,9 @@ version: '3.7'
 services:
     apache:
         build: .docker/apache
-        container_name: sf4_apache
+        container_name: sf4_integ_project_server
         ports:
-            - 80:80
+            - 81:80
         volumes:
             - .docker/config/vhosts:/etc/apache2/sites-enabled
             - ./demo-int:/srv
@@ -18,12 +18,15 @@ services:
         container_name: sf4_api_php
         volumes:
             - ./demo-int:/srv
+            - ../grdf-si-gdabundle/:/tmp/gda/
+            - ../grdf-si-sofitbundle/:/tmp/sofit/
         depends_on:
             - database
         networks:
             - gda-test
 
     database:
+        container_name: sf4_integ_project_database
         image: 'mariadb:latest'
         environment:
             - "MYSQL_ROOT_PASSWORD=dev"
@@ -31,7 +34,7 @@ services:
             - "MYSQL_USER=admin"
             - "MYSQL_PASSWORD=admin"
         ports:
-            - '3308:3306'
+            - '3309:3306'
         networks:
             - gda-test
 

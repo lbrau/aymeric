@@ -2,18 +2,22 @@
 
 namespace App\Controller;
 
-use Grdf\GdaApiBundle\Accreditation\Client\GdaClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Grdf\SofitBundle\Client\SofitClient;
 
 class DefaultGdaController extends AbstractController
 {
-    private $gdaClient;
 
-    public function __construct(GdaClient $gdaClient)
+    private $serializer;
+    private $sofitClient;
+
+    public function __construct(SerializerInterface $serializer, SofitClient $sofitClient)
     {
-        $this->gdaClient = $gdaClient;
+        $this->serializer = $serializer;
+        $this->sofitClient = $sofitClient;
     }
 
     /**
@@ -21,6 +25,6 @@ class DefaultGdaController extends AbstractController
      */
     public function index(): Response
     {
-        dump($this->gdaClient->getUserAccreditation('toto', 'titi'));die;
+
     }
 }

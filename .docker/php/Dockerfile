@@ -9,8 +9,20 @@ RUN apt-get update \
 RUN apt-get update && apt-get install -y librabbitmq-dev libssh-dev \
     && docker-php-ext-install opcache bcmath sockets \
     && pecl install amqp \
-    && docker-php-ext-enable amqp
+    && docker-php-ext-enable amqp \
+    && apt-get install libcurl4-openssl-dev
 
+
+RUN apt-get update && \
+    apt-get install -y libxml2-dev
+
+RUN docker-php-ext-install soap
+
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
+    install-php-extensions http
+#RUN docker-php-ext-install curl
 # COPY php.ini /etc/php/7.2.3/php.ini
 COPY php.ini /usr/local/etc/php/php.ini
 
@@ -36,13 +48,6 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen && \
     locale-gen
 
-# Xdebug config
-ENV APCU_VERSION 5.1.18
-RUN pecl install xdebug-2.9.8 && docker-php-ext-enable xdebug
-RUN pecl install apcu-$APCU_VERSION && docker-php-ext-enable --ini-name 05-opcache.ini opcache && docker-php-ext-enable --ini-name 20-apcu.ini apcu
-COPY xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-COPY xdebug.ini /usr/local/etc/nginx/nginx.conf
-ENV PHP_IDE_CONFIG serverName=teenkedin
 # --------------------------------------
 WORKDIR /srv
 

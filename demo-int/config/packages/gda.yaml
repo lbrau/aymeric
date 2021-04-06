@@ -1,9 +1,5 @@
 grdf_gda_api:
-    sofit_gda:
-        api_base_url: 'sofit_gda_base_url'
-    soap_gda:
-        api_base_url: 'soap_base_url'
-    sofit_oidc:
-        api_base_url: 'sofit_oidc_base_url'
-        data: []
-        proxy: 'proxy_value'
+  sofit_gda:
+    api_base_url: '%env(API_SOFITGDA_ENDPOINT)%'
+  soap_gda:
+    api_base_url: '%env(API_SOAPGDA_ENDPOINT)%'
