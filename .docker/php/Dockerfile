@@ -25,6 +25,11 @@ RUN wget https://s1.stackify.com/Account/AgentDownload/Linux --output-document=s
 
 RUN docker-php-ext-install pdo pdo_mysql
 
+# soap
+RUN apt-get update && \
+    apt-get install -y libxml2-dev && \
+    docker-php-ext-install soap
+
 RUN groupadd dev -g 999
 RUN usermod -u 1000 www-data
 RUN useradd dev -g dev -d /home/dev -m

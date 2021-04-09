@@ -56,7 +56,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../../grdf-si-gdabundle/"
+            "url": "/home/laurent/grdf-si-gdabundle/"
         }
     ],
     "conflict": {

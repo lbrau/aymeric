@@ -18,6 +18,7 @@ services:
         container_name: sf4_api_php
         volumes:
             - ./demo-int:/srv
+            - ../grdf-si-gdabundle:/home/${USER}/grdf-si-gdabundle
         depends_on:
             - database
         networks:
