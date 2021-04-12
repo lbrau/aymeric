@@ -1,0 +1,5 @@
+grdf_sofit:
+  sofit_uri: "%env(SOFIT_URI)%"
+  sofit_login: "%env(SOFIT_LOGIN)%"
+  sofit_pwd: "%env(SOFIT_PASSWORD)%"
+  proxy: "%env(GRDF_PROXY)%"
