@@ -17,6 +17,8 @@ class Person
     public $idObjet;
     private $age;
     private $sport;
+    private $inner;
+
     public function getName()
     {
         return $this->name;
@@ -65,5 +67,21 @@ class Person
     public function setIdObject($idObject): void
     {
         $this->idObject = $idObject;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInner()
+    {
+        return $this->inner;
+    }
+
+    /**
+     * @param mixed $inner
+     */
+    public function setInner(DeepModel $inner): void
+    {
+        $this->inner = $inner;
     }
 }

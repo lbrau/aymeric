@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Command;
+
 use App\Model\DeepModel;
 use App\Model\DeepUserModel;
 use App\Model\Person;
@@ -13,22 +14,17 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Grdf\SofitBundle\Client\SofitClient;
 use Grdf\SofitBundle\Model\SofitUser;
 use Doctrine\Common\Collections\ArrayCollection;
-
-
 
 class LabSerializerDeepDenormalizeCommand extends Command
 {

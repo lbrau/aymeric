@@ -12,7 +12,7 @@ class LabDeepNormalizer implements SerializerInterface, NormalizerInterface, Den
 {
     public function serialize($data, string $format, array $context = [])
     {
-        dump('labDeep');die;
+//        dump('labDeep');die;
         // TODO: Implement serialize() method.
     }
 
@@ -36,7 +36,7 @@ class LabDeepNormalizer implements SerializerInterface, NormalizerInterface, Den
         $arrayDenormalizer = new ArrayDenormalizer();
         $res = $arrayDenormalizer->denormalize($data, $type, $format, $context);
 
-        dump($data,$type,$res);
+//        dump($data,$type,$res);
         // TODO: Implement denormalize() method.
     }
 

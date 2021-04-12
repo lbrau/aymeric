@@ -76,16 +76,15 @@ class SofitIntegrationCommand extends Command
 //        dump($this->getInternalUser('y8j823659z8qt5695ns577ki328j4fknsi25y9442rf54xn4b25mixaqzy6z52usd8is6899upj')); // NotOk
 //        dump($this->searchUserHabilitation('y8j823659z8qt5695ns577ki328j4fknsi25y9442rf54xn4b25mixaqzy6z52usd8is6899upj')); // ok
 //        dump($this->searchUserByEmail('HAMDI.AFRIT@1985.com')); // ok
-//        $this->createUserAccountCommand(); // ok
+        $this->createUserAccountCommand(); // ok
 //        dump($this->activateUserAccountCommand('7k8bh8n8jkk050in51eztt9jlpgmxxmqnbnlq41h936ejt9w2ky3proijnphz5niy8lbvai2wbz', $tokenId)); // ok
 //        dump($user, $this->updateUserAccountCommand($user, $tokenId)); // ok
 //        dump($this->lostPassword('broly.brau2ee@mail.com')); // ok  : todo erreur 400 a gerer
 //        dump('response : ', $this->updateUserHabilitation($groups, "01s3wixg163ob34hweonr9kkpyp15pfejjvu2owh0dge0rtd1vhjsxy8folkvvqwpxr0tx90bzy" )); // ok todo manage 401, 400 erreur. and response actually the sofitUser is not adapted
-
 //        dump(
 //            $this->updatePassword('###loloPacman$$$', 'PAPaacmann987654', 'y8j823d639zzd8qt5695ns577ki328j4fknsi25y9442rf54xn4b25mixaqzy6z52usd8i899upj')
 //        ); // ok.
-        dump('reset response: ', $this->resetPassword($newPassword, $lostPasswordToken)); // erreur 400 meme sur postman a to debug
+//        dump('reset response: ', $this->resetPassword('broly.brau2ee@mail.com', $newPassword)); //  ok
 
         return Command::SUCCESS;
     }
@@ -161,7 +160,7 @@ class SofitIntegrationCommand extends Command
         return $this->sofitClient->updateUserHabilitation($groups, $idInternaute);
     }
 
-    public function resetPassword(string $newPassword, string $lostPwdToken): SofitUserInterface
+    public function resetPassword(string $newPassword, string $lostPwdToken): array
     {
         return $this->sofitClient->resetPassword($newPassword, $lostPwdToken);
     }
